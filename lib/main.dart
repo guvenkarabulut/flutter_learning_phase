@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 //import './myCounterPage.dart';
 //import 'image_widget.dart';
-import './dropDownButton.dart';
+//import './dropDownButton.dart';
+import './popupMenuKullanımı.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Image Widgets'),
         ),
-        body: const DropDownButtonKullanimi(),
+        body: const PopUpMenuKullanimi(),
       ),
     );
   }
