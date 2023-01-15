@@ -17,23 +17,29 @@ class ListViewVeEasyLoadingKullanimi extends StatelessWidget {
       ),
       body: ListView(
         children: tumOgrenciler
-            .map((e) => ListTile(
-                  onTap: () {
-                    EasyLoading.showToast(
-                      'Öğrenciye Tıklandı ve index değeri: ${e.id}',
-                      toastPosition: EasyLoadingToastPosition.bottom,
-                      duration: Duration(seconds: 2),
-                      dismissOnTap: true,
-                      maskType: EasyLoadingMaskType.black,
-                    );
-                  },
-                  onLongPress: () {
-                    _alertDialogIslemleri(context);
-                  },
-                  title: Text(e.isim),
-                  subtitle: Text(e.soyisim),
-                  leading: CircleAvatar(
-                    child: Text(e.id.toString()),
+            .map((e) => Card(
+                  color: e.id % 2 == 0
+                      ? Colors.red.shade100
+                      : Colors.blue.shade100,
+                  elevation: 5,
+                  child: ListTile(
+                    onTap: () {
+                      EasyLoading.showToast(
+                        'Öğrenciye Tıklandı ve index değeri: ${e.id}',
+                        toastPosition: EasyLoadingToastPosition.bottom,
+                        duration: Duration(seconds: 2),
+                        dismissOnTap: true,
+                        maskType: EasyLoadingMaskType.black,
+                      );
+                    },
+                    onLongPress: () {
+                      _alertDialogIslemleri(context, e);
+                    },
+                    title: Text(e.isim),
+                    subtitle: Text(e.soyisim),
+                    leading: CircleAvatar(
+                      child: Text(e.id.toString()),
+                    ),
                   ),
                 ))
             .toList(),
@@ -41,12 +47,13 @@ class ListViewVeEasyLoadingKullanimi extends StatelessWidget {
     );
   }
 
-  void _alertDialogIslemleri(BuildContext myContext) {
+  void _alertDialogIslemleri(BuildContext myContext, Ogrenci secilen) {
     showDialog(
+        barrierDismissible: false,
         context: myContext,
         builder: (context) {
           return AlertDialog(
-            title: Text('Dialog Başlık'),
+            title: Text(secilen.isim),
             content: SingleChildScrollView(
                 child: ListBody(
               children: [
@@ -57,7 +64,11 @@ class ListViewVeEasyLoadingKullanimi extends StatelessWidget {
             )),
             actions: [
               TextButton(onPressed: () {}, child: Text('Tamam')),
-              TextButton(onPressed: () {}, child: Text('İptal'))
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Kapat'))
             ],
           );
         });

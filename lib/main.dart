@@ -7,7 +7,12 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 //import './card_listtile.dart';
 //import 'listview_kullanimi.dart';
 //import 'listview_builder.dart';
-import 'listview_ve_easyloading.dart';
+//import 'listview_ve_easyloading.dart';
+//import 'listview_problemleri.dart';
+
+//import 'gridView_kullanimi.dart';
+//import 'gesture_detector.dart';
+import 'custom_scroolview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ListViewVeEasyLoadingKullanimi(),
+      home: CustomScrolView(),
       builder: EasyLoading.init(),
     );
   }
