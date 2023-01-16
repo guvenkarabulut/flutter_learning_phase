@@ -1,52 +1,74 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
-//import './myCounterPage.dart';
-//import 'image_widget.dart';
-//import './dropDownButton.dart';
-//import './popupMenuKullanımı.dart';
-//import './card_listtile.dart';
-//import 'listview_kullanimi.dart';
-//import 'listview_builder.dart';
-//import 'listview_ve_easyloading.dart';
-//import 'listview_problemleri.dart';
+import './nav_color_pages/main_nav.dart' as mainNavs;
+import './route_generator.dart';
 
-//import 'gridView_kullanimi.dart';
-//import 'gesture_detector.dart';
-import 'custom_scroolview.dart';
-
-void main() {
-  runApp(const MyApp());
-  configLoading();
-}
-
-void configLoading() {
-  EasyLoading.instance
-    ..displayDuration = const Duration(milliseconds: 2000)
-    ..indicatorType = EasyLoadingIndicatorType.fadingCircle
-    ..loadingStyle = EasyLoadingStyle.custom
-    ..indicatorSize = 45.0
-    ..radius = 10.0
-    ..progressColor = Colors.yellow
-    ..backgroundColor = Colors.green
-    ..indicatorColor = Colors.yellow
-    ..textColor = Colors.white
-    ..maskColor = Colors.blue.withOpacity(0.5)
-    ..userInteractions = true
-    ..dismissOnTap = true;
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      title: 'Material App',
+      home: MainPage(),
+      onGenerateRoute: RouteGenerator.generateRoute,
+    );
+  }
+}
+
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Material App Bar'),
       ),
-      home: CustomScrolView(),
-      builder: EasyLoading.init(),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          Card(
+            color: Colors.amber.shade400,
+            child: ListTile(
+              leading: Icon(Icons.color_lens, color: Colors.white, size: 40),
+              title: Text('Home'),
+              subtitle: Text('Home Page'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {Navigator.pushNamed(context, '/ColorNav')},
+            ),
+          ),
+          Card(
+            color: Colors.yellow.shade400,
+            child: ListTile(
+              leading: Icon(Icons.error_outline, color: Colors.white, size: 40),
+              title: Text('This is for Error Page'),
+              subtitle: Text('This is for Error Page'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {Navigator.of(context).pushNamed('/sea')},
+            ),
+          ),
+          Card(
+            color: Colors.purple.shade400,
+            child: ListTile(
+              leading:
+                  Icon(Icons.new_label_outlined, color: Colors.white, size: 40),
+              title: Text('New Data with ModalRoute'),
+              subtitle:
+                  Text('ModalRoute ile yeni sayfalara nasıl veri gönderilir.'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {
+                Navigator.of(context)
+                    .pushNamed('/ogrenciListesi', arguments: 80)
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

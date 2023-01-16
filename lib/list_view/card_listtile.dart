@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lesson/myRowColumnApp.dart';
 
 class CardListTileKullanimi extends StatelessWidget {
   const CardListTileKullanimi({super.key});

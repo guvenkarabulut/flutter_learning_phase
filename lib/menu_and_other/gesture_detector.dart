@@ -3,7 +3,7 @@ import 'dart:math' as math;
 
 class GestureDetectorWidget extends StatelessWidget {
   GestureDetectorWidget({super.key});
-  List _renkler = List.generate(
+  final List _renkler = List.generate(
       50000,
       (index) => Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
           .withOpacity(1.0));
@@ -15,7 +15,7 @@ class GestureDetectorWidget extends StatelessWidget {
       ),
       body: GridView.builder(
         gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: ((context, index) {
           return GestureDetector(
             onTap: () {
