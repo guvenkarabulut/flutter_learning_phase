@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './nav_color_pages/main_nav.dart' as mainNavs;
 import './route_generator.dart';
 
 void main() => runApp(const MyApp());
@@ -64,6 +63,32 @@ class MainPage extends StatelessWidget {
               onTap: () => {
                 Navigator.of(context)
                     .pushNamed('/ogrenciListesi', arguments: 80)
+              },
+            ),
+          ),
+          Card(
+            color: Colors.pink.shade400,
+            child: ListTile(
+              leading: Icon(Icons.input, color: Colors.white, size: 40),
+              title: Text('New Data with ModalRoute'),
+              subtitle: Text('Input Widgets'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {
+                Navigator.of(context).pushNamed('/inputWidgets', arguments: 80)
+              },
+            ),
+          ),
+          Card(
+            color: Colors.deepOrange.shade400,
+            child: ListTile(
+              leading: Icon(Icons.construction, color: Colors.white, size: 40),
+              title: Text('Global Key'),
+              subtitle: Text('Counter App'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {
+                Navigator.of(context).pushNamed('/globalKey', arguments: 80)
               },
             ),
           ),

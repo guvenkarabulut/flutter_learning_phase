@@ -5,6 +5,8 @@ import 'package:flutter_lesson/ogrenci_listesi/ogrenci_detay.dart';
 import './nav_color_pages/main_nav.dart' as mainNavs;
 import './ogrenci_listesi/ogrenci_listesi.dart';
 import './ogrenci_listesi/ogrenci_detay.dart';
+import './input_widgets/input_widgets_main.dart';
+import './global_key/global_key_main.dart';
 import './main.dart';
 
 class RouteGenerator {
@@ -28,7 +30,10 @@ class RouteGenerator {
         return RouteGenerator()._routeGenerator(mainNavs.AnaSayfa(), settings);
       case '/ogrenciListesi':
         return RouteGenerator()._routeGenerator(OgrenciListesi(), settings);
-
+      case '/inputWidgets':
+        return RouteGenerator()._routeGenerator(MyInputsHomePage(), settings);
+      case '/globalKey':
+        return RouteGenerator()._routeGenerator(globalKeyMain(), settings);
       case '/ogrenciDetay':
         return RouteGenerator()._routeGenerator(
             OgrenciDetay(secilenOgrenci: settings.arguments as Ogrenci),
