@@ -92,6 +92,47 @@ class MainPage extends StatelessWidget {
               },
             ),
           ),
+          Card(
+            color: Colors.teal.shade400,
+            child: ListTile(
+              leading: Icon(Icons.draw, color: Colors.white, size: 40),
+              title: Text('Other Design Widgets'),
+              subtitle: Text('Drawer'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {
+                Navigator.of(context).pushNamed('/drawerMain', arguments: 80)
+              },
+            ),
+          ),
+          Card(
+            color: Colors.blue.shade400,
+            child: ListTile(
+              leading:
+                  Icon(Icons.dark_mode_sharp, color: Colors.white, size: 40),
+              title: Text('Örnek 1'),
+              subtitle: Text(
+                  'https://dribbble.com/shots/20423228-Clamben-Fashion-Store-Mobile-App'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () =>
+                  {Navigator.of(context).pushNamed('/ornekBir', arguments: 80)},
+            ),
+          ),
+          Card(
+            color: Colors.cyan.shade400,
+            child: ListTile(
+              leading: Icon(Icons.data_object, color: Colors.white, size: 40),
+              title: Text('Data Operations'),
+              subtitle: Text('HTTP Requests'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {
+                Navigator.of(context)
+                    .pushNamed('/dataOperations', arguments: 80)
+              },
+            ),
+          ),
         ],
       ),
     );

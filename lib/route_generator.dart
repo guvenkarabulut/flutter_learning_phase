@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lesson/ogrenci_listesi/ogrenci_detay.dart';
 import './nav_color_pages/main_nav.dart' as mainNavs;
 import './ogrenci_listesi/ogrenci_listesi.dart';
-import './ogrenci_listesi/ogrenci_detay.dart';
 import './input_widgets/input_widgets_main.dart';
 import './global_key/global_key_main.dart';
 import './main.dart';
+import './other_design_widgets/drawer_main.dart';
+import './dribble_ornekler/ornek_1/ornek_1.page.dart';
+import './data_operations/data_operations_page.dart';
 
 class RouteGenerator {
   _routeGenerator(Widget gidilecekSayfa, RouteSettings settings) {
@@ -34,6 +36,13 @@ class RouteGenerator {
         return RouteGenerator()._routeGenerator(MyInputsHomePage(), settings);
       case '/globalKey':
         return RouteGenerator()._routeGenerator(globalKeyMain(), settings);
+      case '/drawerMain':
+        return RouteGenerator()._routeGenerator(DrawerMain(), settings);
+      case '/ornekBir':
+        return RouteGenerator()._routeGenerator(OrnekBirMain(), settings);
+      case '/dataOperations':
+        return RouteGenerator()._routeGenerator(DataOperationsPage(), settings);
+
       case '/ogrenciDetay':
         return RouteGenerator()._routeGenerator(
             OgrenciDetay(secilenOgrenci: settings.arguments as Ogrenci),
