@@ -3,14 +3,9 @@ import './local_json.dart';
 import './faker_data_operations.dart';
 import './dio_example.dart';
 
-class DataOperationsPage extends StatefulWidget {
+class DataOperationsPage extends StatelessWidget {
   const DataOperationsPage({super.key});
 
-  @override
-  State<DataOperationsPage> createState() => _DataOperationsPageState();
-}
-
-class _DataOperationsPageState extends State<DataOperationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,27 +15,27 @@ class _DataOperationsPageState extends State<DataOperationsPage> {
       ),
       body: ListView(
         children: [
-          myCardListTileWidget(
+          MyNavCardWidget(
             color: Colors.deepOrange.shade300,
             icon: const Icon(Icons.home, color: Colors.white, size: 40),
             title: 'Local JSON',
             subTitle: 'Read Local JSON File',
-            route: MaterialPageRoute(builder: (context) => LocalJSONPage()),
+            route: const LocalJSONPage(),
           ),
-          myCardListTileWidget(
+          MyNavCardWidget(
             color: Colors.teal.shade300,
             icon:
                 const Icon(Icons.casino_rounded, color: Colors.white, size: 40),
             title: 'Faker Data Operations',
             subTitle: 'Read faker-js Data',
-            route: MaterialPageRoute(builder: (context) => FakerDataMain()),
+            route: const FakerDataMain(),
           ),
-          myCardListTileWidget(
+          MyNavCardWidget(
             color: Colors.blue.shade300,
             icon: const Icon(Icons.cloud, color: Colors.white, size: 40),
             title: 'Dio Example',
             subTitle: 'Read Data from API',
-            route: MaterialPageRoute(builder: (context) => DioExample()),
+            route: const DioExample(),
           ),
         ],
       ),
@@ -48,8 +43,79 @@ class _DataOperationsPageState extends State<DataOperationsPage> {
   }
 }
 
-class myCardListTileWidget extends StatelessWidget {
-  const myCardListTileWidget({
+class MyNavCardWidget extends StatelessWidget {
+  const MyNavCardWidget({
+    Key? key,
+    required Color color,
+    required Icon icon,
+    required String title,
+    required String subTitle,
+    required StatefulWidget route,
+  })  : _color = color,
+        _icon = icon,
+        _title = title,
+        _subTitle = subTitle,
+        _route = route,
+        super(key: key);
+
+  final Color _color;
+  final Icon _icon;
+  final String _title;
+  final String _subTitle;
+  final StatefulWidget _route;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: _color,
+      child: ListTile(
+        leading: _icon,
+        title: Container(
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.only(top: 5, bottom: 5),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              _title,
+              style: Theme.of(context).textTheme.headline5?.copyWith(
+                    color: Colors.white,
+                  ),
+            ),
+          ),
+        ),
+        subtitle: Container(
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          padding: const EdgeInsets.all(5),
+          margin: const EdgeInsets.only(bottom: 5),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              _subTitle,
+              style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                    color: Colors.white,
+                  ),
+            ),
+          ),
+        ),
+        onTap: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: ((context) => _route)));
+        },
+      ),
+    );
+  }
+}
+
+
+/* class MyCardListTileWidget extends StatelessWidget {
+  const MyCardListTileWidget({
     Key? key,
     required Color color,
     required Icon icon,
@@ -109,8 +175,11 @@ class myCardListTileWidget extends StatelessWidget {
             ),
           ),
         ),
-        onTap: () => {Navigator.of(context).push(_route)},
+        onTap: () {
+          Future.delayed(Duration.zero, () => Navigator.push(context, _route));
+        },
       ),
     );
   }
 }
+*/

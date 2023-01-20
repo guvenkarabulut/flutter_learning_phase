@@ -133,6 +133,20 @@ class MainPage extends StatelessWidget {
               },
             ),
           ),
+          Card(
+            color: Colors.green.shade400,
+            child: ListTile(
+              leading:
+                  Icon(Icons.stacked_bar_chart, color: Colors.white, size: 40),
+              title: Text('Stack'),
+              subtitle: Text('Stack Widgets'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {
+                Navigator.of(context).pushNamed('/stackWidget', arguments: 80)
+              },
+            ),
+          ),
         ],
       ),
     );

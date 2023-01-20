@@ -10,8 +10,6 @@ class LocalJSONPage extends StatefulWidget {
 }
 
 class _LocalJSONPageState extends State<LocalJSONPage> {
-  List<ModelCar> allCars = [];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +18,16 @@ class _LocalJSONPageState extends State<LocalJSONPage> {
         centerTitle: true,
       ),
       body: FutureBuilder(
+        initialData: [
+          ModelCar(
+            brand: 'No Data',
+            models: ['No Data'],
+          )
+        ],
         future: readMyJson(),
         builder: (context, AsyncSnapshot<List<ModelCar>> snapshot) {
           if (snapshot.hasData) {
-            allCars = snapshot.data!;
+            var allCars = snapshot.data!;
             return ListView.builder(
               itemCount: allCars.length,
               itemBuilder: (context, index) {
