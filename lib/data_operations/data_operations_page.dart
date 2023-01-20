@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'local_json.dart';
+import './local_json.dart';
+import './faker_data_operations.dart';
+import './dio_example.dart';
 
 class DataOperationsPage extends StatefulWidget {
   const DataOperationsPage({super.key});
@@ -24,6 +26,21 @@ class _DataOperationsPageState extends State<DataOperationsPage> {
             title: 'Local JSON',
             subTitle: 'Read Local JSON File',
             route: MaterialPageRoute(builder: (context) => LocalJSONPage()),
+          ),
+          myCardListTileWidget(
+            color: Colors.teal.shade300,
+            icon:
+                const Icon(Icons.casino_rounded, color: Colors.white, size: 40),
+            title: 'Faker Data Operations',
+            subTitle: 'Read faker-js Data',
+            route: MaterialPageRoute(builder: (context) => FakerDataMain()),
+          ),
+          myCardListTileWidget(
+            color: Colors.blue.shade300,
+            icon: const Icon(Icons.cloud, color: Colors.white, size: 40),
+            title: 'Dio Example',
+            subTitle: 'Read Data from API',
+            route: MaterialPageRoute(builder: (context) => DioExample()),
           ),
         ],
       ),
