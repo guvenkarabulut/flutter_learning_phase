@@ -147,6 +147,19 @@ class MainPage extends StatelessWidget {
               },
             ),
           ),
+          Card(
+            color: Colors.indigo.shade400,
+            child: ListTile(
+              leading: Icon(Icons.key, color: Colors.white, size: 40),
+              title: Text('Key'),
+              subtitle: Text('Key Example'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () => {
+                Navigator.of(context).pushNamed('/keyExample', arguments: 80)
+              },
+            ),
+          ),
         ],
       ),
     );
