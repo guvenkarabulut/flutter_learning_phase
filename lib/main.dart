@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_lesson/bloc/bloc_counter/counter_bloc.dart';
+import 'package:flutter_lesson/bloc/cubit_counter/counter_cubit.dart';
 import './route_generator.dart';
 
 void main() => runApp(const MyApp());
@@ -8,10 +11,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Material App',
-      home: MainPage(),
-      onGenerateRoute: RouteGenerator.generateRoute,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CounterCubit()),
+        BlocProvider(create: (context) => CounterBloc()),
+      ],
+      child: MaterialApp(
+        title: 'Material App',
+        home: MainPage(),
+        onGenerateRoute: RouteGenerator.generateRoute,
+      ),
     );
   }
 }
@@ -158,6 +167,19 @@ class MainPage extends StatelessWidget {
               onTap: () => {
                 Navigator.of(context).pushNamed('/keyExample', arguments: 80)
               },
+            ),
+          ),
+          Card(
+            color: Colors.red.shade400,
+            child: ListTile(
+              leading:
+                  Icon(Icons.star_rate_outlined, color: Colors.white, size: 40),
+              title: Text('Bloc'),
+              subtitle: Text('Bloc and Cubit'),
+              trailing:
+                  Icon(Icons.arrow_forward_ios, color: Colors.white, size: 40),
+              onTap: () =>
+                  {Navigator.of(context).pushNamed('/bloc', arguments: 80)},
             ),
           ),
         ],

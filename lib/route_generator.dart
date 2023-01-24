@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_lesson/bloc/bloc_page.dart';
 import 'package:flutter_lesson/ogrenci_listesi/ogrenci_detay.dart';
 import 'package:flutter_lesson/stack_widget/stack_widget_app.dart';
 import './nav_color_pages/main_nav.dart';
@@ -48,6 +49,9 @@ class RouteGenerator {
         return RouteGenerator()._routeGenerator(StackWidgetApp(), settings);
       case '/keyExample':
         return RouteGenerator()._routeGenerator(KeyExamplePageMain(), settings);
+      case '/bloc':
+        return RouteGenerator()._routeGenerator(BlocPage(), settings);
+
       case '/ogrenciDetay':
         return RouteGenerator()._routeGenerator(
             OgrenciDetay(secilenOgrenci: settings.arguments as Ogrenci),
